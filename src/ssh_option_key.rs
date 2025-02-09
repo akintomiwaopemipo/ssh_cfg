@@ -904,13 +904,6 @@ pub enum SshOptionKey {
     /// servers running on a single host.
     HostKeyAlias,
 
-    /// Specifies the real host name to log into. This can be used to specify
-    /// nicknames or abbreviations for hosts. Arguments to Hostname accept the
-    /// tokens described in the TOKENS section. Numeric IP addresses are also
-    /// permitted (both on the command line and in Hostname specifications). The
-    /// default is the name given on the command line.
-    Hostname,
-
     /// Specifies the real host name to log into.
     ///
     /// This can be used to specify nicknames or abbreviations for hosts. The
@@ -2163,8 +2156,6 @@ impl FromStr for SshOptionKey {
         } else if s.eq_ignore_ascii_case("hostkeyalias") {
             Ok(Self::HostKeyAlias)
         } else if s.eq_ignore_ascii_case("hostname") {
-            Ok(Self::Hostname)
-        } else if s.eq_ignore_ascii_case("hostname") {
             Ok(Self::HostName)
         } else if s.eq_ignore_ascii_case("identitiesonly") {
             Ok(Self::IdentitiesOnly)
@@ -2440,7 +2431,6 @@ impl fmt::Display for SshOptionKey {
             Self::HostKeyAgent => write!(f, "HostKeyAgent"),
             Self::HostKeyAlgorithms => write!(f, "HostKeyAlgorithms"),
             Self::HostKeyAlias => write!(f, "HostKeyAlias"),
-            Self::Hostname => write!(f, "Hostname"),
             Self::HostName => write!(f, "HostName"),
             Self::IdentitiesOnly => write!(f, "IdentitiesOnly"),
             Self::IdentityAgent => write!(f, "IdentityAgent"),
